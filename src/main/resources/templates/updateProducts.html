@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout.html}">
+<head>
+    <title>Agriculture</title>
+</head>
+
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <form th:action="@{/webProduct/viewProduct/updateProduct/__${Product.idProductEncrypt}__}" th:object="${Product}" method="post">
+        <div class="container my-5">
+            <div class="form-group">
+                <div class="col-md-4 mb-3">
+                    <label>Product Name</label>
+                    <input type="text" class="form-control" name="productName" placeholder="Product Name.." th:value="${Product.productName}" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Price</label>
+                    <input type="text" class="form-control" name="productPrice" placeholder="Product Price.." th:value="${Product.productPrice}" required>
+                    </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Stock Product</label>
+                <input type="text" class="form-control" name="stockProduct" placeholder="Stock Product.." th:value="${Product.stockProduct}" required>
+                </div>
+            <div class="container my-5 md-4">
+                <button class="btn btn-outline-success" type="button" data-toggle="modal" th:data-target="'#confirmUpdateProduct'" href="">
+                    Submit
+                </button>
+
+                <div class="modal fade" th:id="'confirmUpdateProduct'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirmation</h5>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure want to update this product?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                <a th:href="@{updateProduct}">
+                                    <button type="submit" class="btn btn-outline-success">Update</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</form>
+</div>
+
+</body>
+</html>

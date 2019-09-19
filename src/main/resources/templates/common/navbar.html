@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<th:block th:fragment="navbar">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/home/index}">AGRICULTURE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/agriculture/webUser/firstPageUser">USER<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/agriculture/webProduct/firstPageProduct">PRODUCT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/agriculture/webTransaction/transactionPage">TRANSACTION</a>
+                </li>
+            </ul>
+            <form name = "f" th:action="@{/logout}" method="post">
+                <button class="btn btn-icon btn-outline-light" type="submit">
+                    <span class="btn-inner-icon">Logout</span>
+                </button>
+            </form>
+        </div>
+    </nav>
+</th:block>
+</body>
+</html>

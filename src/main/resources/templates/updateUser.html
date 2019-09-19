@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout.html}">
+<head>
+    <title>Agriculture</title>
+</head>
+
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <form th:action="@{/webUser/view/update/__${User.idUserEncrypt}__}" th:object="${User}" method="post">
+        <div class="container my-5">
+            <div class="form-group">
+                <div class="col-md-4 mb-3">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="userName" placeholder="Name.." th:value="${User.userName}" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Balance</label>
+                    <input type="number" class="form-control" name="balanceUser" placeholder="Balance.." th:value="${User.balanceUser}" required>
+                </div>
+            </div>
+            <div class="container my-5">
+                <button class="btn btn-outline-success" type="button" data-toggle="modal" th:data-target="'#confirmUpdateUser'" href="">
+                    Submit
+                </button>
+
+                <div class="modal fade" th:id="'confirmUpdateUser'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirmation</h5>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure want to update this user?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                <a th:href="@{update}">
+                                    <button type="submit" class="btn btn-outline-success">Update</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/agriculture/webUser/view" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </div>
+</form>
+</div>
+
+</body>
+</html>

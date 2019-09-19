@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout.html}">
+<head>
+    <title>Agriculture</title>
+</head>
+
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div class="container col-md-6 my-5">
+        <div class="card border-info mb-3" style="max-width: 18rem;">
+            <div class="card-header">Detail Account</div>
+            <div class="card-body text-info">
+                <h5 class="card-title">ID Account: [[${User.idUser}]]</h5>
+                <p class="card-text">[[${User.userName}]]</p>
+                <p class="card-text">Rp. [[${#numbers.formatDecimal(User.balanceUser, 0, 'COMMA', 2, 'POINT')}]]</p>
+                <a href="/agriculture/webUser/view" class="btn btn-outline-primary">Go Back</a>
+                <a th:href="@{|update/${User.idUserEncrypt}|}" class="btn btn-outline-warning">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

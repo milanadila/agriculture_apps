@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout.html}">
+<head>
+    <title>Agriculture</title>
+</head>
+
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <img th:src="@{/images/3.jpg}" class="d-block w-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Create Account</h5>
+                        <p class="card-text"></p>
+                        <a th:href="@{create}" class="btn btn-outline-primary">Create</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <img th:src="@{/images/4.jpg}" class="d-block w-100">
+                    <div class="card-body">
+                        <h5 class="card-title">List Account</h5>
+                        <p class="card-text"></p>
+                        <a th:href="@{view}" class="btn btn-outline-primary">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

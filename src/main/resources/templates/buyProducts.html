@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout.html}">
+<head>
+    <title>Agriculture</title>
+</head>
+
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div class="container my-5">
+        <div class = "justify-content-start my-2 mb-2">
+            <h2 class="p-3 mb-2 text-center">Buy Product</h2>
+        </div>
+    <form th:action="@{/webProduct/buyProduct}" th:object="${transactionReqDto}" method="post">
+        <div class="container my-5">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Product</label>
+                    <select  class="form-control" name="idProduct" required>
+                        <div th:each="view : ${Products}">
+                            <option th:value="${view.idProduct}" th:text="${view.productName}"></option>
+                        </div>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Account</label>
+                    <select class="form-control" name="idUser" required>
+                        <div th:each="view : ${Users}">
+                            <option th:value="${view.idUser}" th:text="${view.userName}"></option>
+                        </div>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Quantity</label>
+                    <select class="form-control" name="quantityProduct" required  >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="container my-5">
+            <button class="btn btn-outline-success" type="button" data-toggle="modal" th:data-target="'#confirmBuyProduct'" href="">
+                Buy
+            </button>
+
+            <div class="modal fade" th:id="'confirmBuyProduct'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure want to buy this item?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                            <a th:href="@{transactionPage}">
+                                <button type="submit" class="btn btn-outline-success">Buy</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/agriculture/webProduct/firstPageProduct" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+        <div class="alert alert-danger pt-0 pb-0 mt-1 mb-1" th:if="${error != null}"><p class="text-danger font-weight-light mb-0" th:inline="text"><i class="fa fa-bullhorn"></i> [[${error}]]</p></div>
+    </form>
+    </div>
+</div>
+
+</body>
+</html>

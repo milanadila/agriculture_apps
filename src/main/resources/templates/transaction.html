@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout.html}">
+<head>
+   <title>Agriculture</title>
+</head>
+
+<body>
+<div layout:fragment="content" th:remove="tag">
+    <div class="container my-5">
+        <h2 class="p-3 mb-2 text-center">Transaction</h2>
+        <table class="table table-hover" id="table-list">
+            <thead>
+            <tr>
+                <th scope="col">ID Transaction</th>
+                <th scope="col">Account</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Transaction</th>
+                <th scope="col">Balance</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="transaction : ${allTransaction}">
+                <th th:text="${transaction.idTransaction}" scope="row">1</th>
+                <td th:text="${transaction.userName}"></td>
+                <td th:text="${transaction.productName}"></td>
+                <td th:text="${transaction.quantityProduct}"></td>
+                <td th:inline="text">Rp. [[${#numbers.formatDecimal(transaction.totalTransaction, 0, 'COMMA', 2, 'POINT')}]]</td>
+                <td th:inline="text">Rp. [[${#numbers.formatDecimal(transaction.balanceUser, 0, 'COMMA', 2, 'POINT')}]]</td>
+            </tr>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
